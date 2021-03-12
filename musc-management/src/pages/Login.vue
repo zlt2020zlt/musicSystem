@@ -49,9 +49,9 @@ export default {
         .then((res) =>{
           if(res.code == 1){
             localStorage.setItem('userName',this.ruleForm.username);
+            this.$store.commit('setMIslogin',true);
             this.$router.push("/Info");
             this.notify("登录成功","success");
-            _this.$store.commit('mIslogin',true);
           }else{
             this.notify("登录失败","error");
           }

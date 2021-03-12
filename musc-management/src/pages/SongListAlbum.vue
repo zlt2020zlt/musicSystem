@@ -20,7 +20,7 @@
                     <h3>歌单评分：</h3>
                     <div>
                         <el-rate v-model="average" disabled></el-rate>
-                    </div>                    
+                    </div> 
                 </div>
                 <span>{{average*2}}</span>
                 <div>

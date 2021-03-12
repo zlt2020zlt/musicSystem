@@ -61,12 +61,10 @@ export default {
             return this.$route.path.replace('/','');
         }
     },
-    beforeCreate(){
-        if(!this.mIslogin){
+    created(){
+         if(!this.mIslogin){
             this.$router.push({path: '/sysLogin'});
         }
-    },
-    created(){
         //通过Bus进行组件间的通信，来折叠侧边栏
         bus.$on('collapse',msg =>{
             this.collapse = msg

@@ -138,11 +138,12 @@ export default {
     ]),
   },
   beforeCreate(){
-    if(!this.mIslogin){
-            this.$router.push('/sysLogin')
-    }
+  
   },
     created() {
+        if(!this.mIslogin){
+        this.$router.push('/sysLogin')
+    }
     },
     mounted() {
         this.getConsumer();

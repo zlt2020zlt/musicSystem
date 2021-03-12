@@ -1,6 +1,9 @@
 <template>
 <div>
-    <loginLogo/>
+    <!-- <loginLogo/> -->
+    <div class="login-bg">
+        <img src="../assets/img/bg001.jpg" alt="">
+    </div>
     <div class="signUp">
         <div class="signUp-head">
             <span>用户登录</span>
@@ -47,7 +50,9 @@ export default {
                     { required: true, trigger: 'blur',message: '请输入密码' }
                 ]
             }
-        }    
+        }
+    },
+    created(){
     },
     mounted() {
         this.changeIndex('登录');
@@ -65,7 +70,7 @@ export default {
                         _this.$store.commit('setLoginIn',true);
                         _this.$store.commit('setUserId',res.userMsg.id);
                         _this.$store.commit('setUsername',res.userMsg.username);
-                        _this.$store.commit('setAvator',res.userMsg.avator);                                                
+                        _this.$store.commit('setAvator',res.userMsg.avator);
                         setTimeout(function(){
                             _this.changeIndex('首页');
                             _this.$router.push({path: '/userHome'});
@@ -94,4 +99,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/css/sign-up.scss';
+.login-bg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.login-bg>img{
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+}
 </style>
