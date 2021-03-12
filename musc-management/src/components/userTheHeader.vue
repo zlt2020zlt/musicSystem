@@ -20,9 +20,9 @@
                 </div>
             </div>
         </li>
-        <li v-show="!loginIn" :class="{active: item.name == activeName}" v-for="item in loginMsg" :key="item.path" @click="goPage(item.path,item.name)">
+        <!-- <li :class="{active: item.name == activeName}" v-for="item in loginMsg" :key="item.path" @click="goPage(item.path,item.name)">
             {{item.name}}
-        </li>
+        </li> -->
     </ul>
     <div class="header-right" v-show="loginIn">
         <div id='user'>
@@ -57,11 +57,12 @@ export default {
       ])
   },
   beforeCreate(){
-    if(!this.loginIn){
-    this.$router.push({path: '/'});
-    }
+
   },
   created() {
+    if(!this.loginIn){
+        this.$router.push({path: '/'});
+    }
       this.navMsg = navMsg;
       this.loginMsg = loginMsg;
       this.menuList = menuList;

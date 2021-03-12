@@ -62,7 +62,7 @@ export default {
         }
     },
     created(){
-         if(!this.mIslogin){
+        if(!this.mIslogin){
             this.$router.push({path: '/sysLogin'});
         }
         //通过Bus进行组件间的通信，来折叠侧边栏

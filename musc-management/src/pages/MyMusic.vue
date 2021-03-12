@@ -1,27 +1,33 @@
 <template>
-    <div class="my-music">
-        <div class="album-slide">
-            <div class="album-img">
-                <img :src="attachImageUrl(avator)">
+    <div>
+        <user-the-header/>
+        <div class="my-music">
+            <div class="album-slide">
+                <div class="album-img">
+                    <img :src="attachImageUrl(avator)">
+                </div>
+                <ul class="album-info">
+                    <li>昵称:{{username}}</li>
+                    <li>性别:{{userSex}}</li>
+                    <li>生日：{{birth}}</li>
+                    <li>故乡：{{location}}</li>
+                </ul>
             </div>
-            <ul class="album-info">
-                <li>昵称:{{username}}</li>
-                <li>性别:{{userSex}}</li>
-                <li>生日：{{birth}}</li>
-                <li>故乡：{{location}}</li>
-            </ul>
+            <div class="album-content">
+                <div class="album-title">
+                    个性签名：{{introduction}}
+                </div>
+                <div class="songs-body">
+                    <album-content :songList="collectList">
+                        <template slot="title">我的收藏</template>
+                    </album-content>
+                </div>
+            </div>
         </div>
-        <div class="album-content">
-            <div class="album-title">
-                个性签名：{{introduction}}
-            </div>
-            <div class="songs-body">
-                <album-content :songList="collectList">
-                    <template slot="title">我的收藏</template>
-                </album-content>
-            </div>
-        </div>
+        <the-footer/>
+        <user-play-bar/>
     </div>
+
 </template>
 
 <script>
@@ -29,12 +35,17 @@ import {mixin} from '../mixins';
 import {mapGetters} from 'vuex';
 import {getUserOfId,getCollectOfUserId,songOfSongId} from '../api/index';
 import AlbumContent from "../components/AlbumContent";
-
+import userPlayBar from '../components/userPlayBar';
+import userTheHeader from '../components/userTheHeader';
+import TheFooter from '../components/TheFooter';
 export default {
     name: 'my-music',
     mixins: [mixin],
     components:{
-        AlbumContent
+        AlbumContent,
+        userPlayBar,
+        userTheHeader,
+        TheFooter
     },
     data(){
         return {

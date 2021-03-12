@@ -1,32 +1,43 @@
 <template>
-    <div class="song-list">
-        <ul class="song-list-header">
-            <li v-for="(item,index) in songStyle" :key="index" @click="handleChangeView(item.name)"
-                :class="{active:item.name==activeName}">
-                {{item.name}}
-            </li>
-        </ul>
-        <div>
-            <content-list :contentList="data"></content-list>
-            <div class="pagination">
-                <el-pagination @current-change="handleCurrentChange" background layout="total,prev,pager,next"
-                        :current-page="currentPage" :page-size="pageSize" :total="albumDatas.length">
-                </el-pagination>
+    <div >
+        <user-the-header/>
+        <div class="song-list">
+            <ul class="song-list-header">
+                <li v-for="(item,index) in songStyle" :key="index" @click="handleChangeView(item.name)"
+                    :class="{active:item.name==activeName}">
+                    {{item.name}}
+                </li>
+            </ul>
+            <div>
+                <content-list :contentList="data"></content-list>
+                <div class="pagination">
+                    <el-pagination @current-change="handleCurrentChange" background layout="total,prev,pager,next"
+                            :current-page="currentPage" :page-size="pageSize" :total="albumDatas.length">
+                    </el-pagination>
+                </div>
             </div>
         </div>
+
+        <the-footer/>
+        <user-play-bar/>
     </div>
 </template>
 <script>
 import ContentList from '../components/ContentList';
+import TheFooter from '../components/TheFooter';
 import {getAllSongList,getSongListOfLikeStyle} from '../api/index';
 import {mixin} from "../mixins";
 import {songStyle} from '../assets/data/songList';
 import {mapGetters} from 'vuex';
-
+import userPlayBar from '../components/userPlayBar';
+import userTheHeader from '../components/userTheHeader';
 export default {
     name: 'song-list',
     components:{
-        ContentList
+        ContentList,
+        userPlayBar,
+        userTheHeader,
+        TheFooter
     },
     data(){
         return{

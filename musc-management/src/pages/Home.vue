@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <user-the-header/>
     <swiper />
     <div class="section" v-for="(item,index) in songsList" :key="index">
       <div class="section-title">{{item.name}}</div>
@@ -9,6 +10,7 @@
     <user-the-aside/>
     <scroll-top/>
     <the-footer/>
+    <user-play-bar/>
   </div>
 </template>
 
@@ -20,6 +22,8 @@ import userTheAside from '../components/userTheAside';
 import Swiper from "../components/Swiper";
 import contentList from '../components/ContentList';
 import {getAllSinger,getAllSongList} from '../api/index';
+import userPlayBar from '../components/userPlayBar';
+import userTheHeader from '../components/userTheHeader';
 import {mapGetters} from 'vuex';
 export default {
   name: 'home',
@@ -30,6 +34,8 @@ export default {
     TheFooter,
     userSongAudio,
     userTheAside,
+    userPlayBar,
+    userTheHeader
   },
   computed:{
     ...mapGetters([
@@ -45,6 +51,7 @@ export default {
     }
   },
   created () {
+    debugger
     if(!this.loginIn){
       this.$router.push({path: '/'});
     }

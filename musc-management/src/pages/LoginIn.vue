@@ -66,6 +66,7 @@ export default {
             loginIn(params)
                 .then(res => {
                     if(res.code == 1){
+                        debugger
                         _this.notify('登录成功','success');
                         _this.$store.commit('setLoginIn',true);
                         _this.$store.commit('setUserId',res.userMsg.id);

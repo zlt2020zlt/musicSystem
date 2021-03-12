@@ -1,6 +1,8 @@
 <template>
-    <div class="singer">
-        <ul class="singer-header">
+    <div->
+        <user-the-header/>
+        <div class="singer">
+            <ul class="singer-header">
             <li v-for="(item,index) in singerStyle" :key="index" @click="handleChangeView(item)"
                 :class="{active:item.name==activeName}">
                 {{item.name}}
@@ -14,7 +16,10 @@
                 </el-pagination>
             </div>
         </div>
-    </div>
+        </div>
+        <the-footer/>
+        <user-play-bar/>
+    </div->
 </template>
 <script>
 import ContentList from '../components/ContentList';
@@ -22,11 +27,16 @@ import {getAllSinger,getSingerOfSex} from '../api/index';
 import {mixin} from "../mixins";
 import {singerStyle} from '../assets/data/singer';
 import {mapGetters} from 'vuex';
-
+import TheFooter from '../components/TheFooter';
+import userPlayBar from '../components/userPlayBar';
+import userTheHeader from '../components/userTheHeader';
 export default {
     name: 'singer',
     components:{
-        ContentList
+        TheFooter,
+        ContentList,
+        userPlayBar,
+        userTheHeader
     },
     data(){
         return{
