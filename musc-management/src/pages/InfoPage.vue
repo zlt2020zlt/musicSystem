@@ -74,6 +74,7 @@
 </template>
 <script>
 import {getAllConsumer,allSong,getAllSinger,getAllSongList} from '../api/index';
+import {mapGetters} from 'vuex';
 export default {
     data(){
         return {
@@ -131,8 +132,17 @@ export default {
             }
         }
     },
+    computed:{
+    ...mapGetters([
+        'mIslogin'        //管理原是否登录
+    ]),
+  },
+  beforeCreate(){
+    if(!this.mIslogin){
+            this.$router.push('/sysLogin')
+    }
+  },
     created() {
-
     },
     mounted() {
         this.getConsumer();

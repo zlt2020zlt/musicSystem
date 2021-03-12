@@ -105,6 +105,7 @@
 <script>
 import {getAllSongList,setSongList,updateSongList,delSongList} from '../api/index';
 import { mixin } from '../mixins/index';
+import {mapGetters} from 'vuex';
 export default {
     mixins: [mixin],
     data(){
@@ -133,6 +134,9 @@ export default {
         }
     },
     computed:{
+        ...mapGetters([
+            'loginIn'        //用户是否已登录
+        ]),
         //计算当前搜索结果表里的数据
         data(){
             return this.tableData.slice((this.currentPage - 1) * this.pageSize,this.currentPage * this.pageSize)
@@ -154,6 +158,9 @@ export default {
         }
     },
     created(){
+        if(!this.loginIn){
+        this.$router.push({path: '/'});
+        }
         this.getData();
     },
     methods:{

@@ -24,6 +24,7 @@
 
 <script>
 import bus from "../assets/js/bus"
+import {mapGetters} from 'vuex';
 export default {
     data(){
         return{
@@ -49,13 +50,20 @@ export default {
                     index: 'SongList',
                     title: '歌单管理'
                 },
-                
             ]
         }
     },
     computed:{
+        ...mapGetters([
+            'mIslogin'        //管理原是否登录
+        ]),
         onRoutes(){
             return this.$route.path.replace('/','');
+        }
+    },
+    beforeCreate(){
+        if(!this.mIslogin){
+            this.$router.push({path: '/sysLogin'});
         }
     },
     created(){

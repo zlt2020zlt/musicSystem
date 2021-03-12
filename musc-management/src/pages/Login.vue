@@ -28,7 +28,7 @@ export default {
     return {
       ruleForm:{
         username: "admin",
-        password: "123"
+        password: "1"
       },
       rules:{
         username:[
@@ -51,6 +51,7 @@ export default {
             localStorage.setItem('userName',this.ruleForm.username);
             this.$router.push("/Info");
             this.notify("登录成功","success");
+            _this.$store.commit('mIslogin',true);
           }else{
             this.notify("登录失败","error");
           }
