@@ -158,9 +158,7 @@ export default {
         }
     },
     created(){
-        if(!this.loginIn){
-        this.$router.push({path: '/'});
-        }
+
         this.getData();
     },
     methods:{

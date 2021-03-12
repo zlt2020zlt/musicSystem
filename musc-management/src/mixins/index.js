@@ -21,7 +21,7 @@ export const mixin = {
         },
         //根据相对地址获取绝对地址
         getUrl(url) {
-            return `${this.$store.state.HOST}/${url}`
+            return `${this.$store.state.configure.HOST}/${url}`
         },
         //根据歌手名字模糊查询歌曲
         getSong() {

@@ -115,6 +115,8 @@ export default {
 </script>
 
 <style scoped>
+@import '../assets/css/main.scss';
+
     .handle-box{
         margin-bottom: 20px;
     }
