@@ -4,11 +4,17 @@ import Element from 'element-ui'
 // import VueRouter from 'vue-router'
 import router from "./router/router"
 import 'element-ui/lib/theme-chalk/index.css';
+import '@/assets/js/iconfont0.js'
+import '@/assets/js/iconfont1.js'
+import '@/assets/js/iconfont2.js'
+import '@/assets/js/iconfont3.js'
 import axios from 'axios';
 import store from './store/index'
-import './assets/css/main.css'
 import VCharts from 'v-charts'
+import './assets/css/index.scss'
 import 'babel-polyfill'
+// import './assets/css/main.css'   //暂时注释
+
 axios.defaults.withCredentials = true;
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false

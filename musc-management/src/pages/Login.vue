@@ -1,6 +1,6 @@
 <template>
   <div class="login-wrap">
-    <div class="ms-title">music 后台管理登录</div>
+    <div class="ms-title">管理员管理登录</div>
     <div class="ms-login">
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm">
         <el-form-item prop="username">
@@ -12,6 +12,8 @@
         <div class="login-btn">
           <el-button type="primary" @click="submitForm">登录</el-button>
         </div>
+        <div @click="goToUerLogin" class="
+        to-login-user">用户登录</div>
       </el-form>
     </div>
   </div>
@@ -53,6 +55,9 @@ export default {
             this.notify("登录失败","error");
           }
         });
+    },
+    goToUerLogin(){
+      this.$router.push({path: '/'});
     }
   }
 }
@@ -97,4 +102,12 @@ export default {
   width: 100%;
   height: 36px;
 }
+    .to-login-user {
+        margin-top: 20px;
+        float: right;
+        height: 30px;
+        line-height: 30px;
+        color: #66b1ff;
+        border-bottom: 1px solid blue;
+    }
 </style>

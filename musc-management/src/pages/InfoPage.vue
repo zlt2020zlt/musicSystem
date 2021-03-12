@@ -204,6 +204,7 @@ export default {
 </script>
 
 <style scoped>
+@import '../assets/css/main.scss'; 
 .grid-content {
     display: flex;
     align-items: center;

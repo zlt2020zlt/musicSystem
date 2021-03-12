@@ -69,3 +69,41 @@ export const deleteCollection = (userId, songId) => get(`collect/delete?userId=$
 export const getCommentOfSongListId = (songListId) => get(`/comment/commentOfSongListId?songListId=${songListId}`);
 //删除评论
 export const deleteComment = (id) => get(`comment/delete?id=${id}`);
+//根据性别查询歌手
+export const getSingerOfSex = (sex) => get(`singer/singerOfSex?sex=${sex}`);
+//根据歌手名字模糊查询歌曲
+export const likeSongOfName = (keywords) => get(`song/likeSongOfName?songName=${keywords}`);
+//返回标题包含文字的歌单列表
+export const getSongListOfLikeTitle = (keywords) => get(`songList/likeTitle?title=${keywords}`);
+//根据风格模糊查询歌单列表
+export const getSongListOfLikeStyle = (style) => get(`songList/likeStyle?style=${style}`);
+//注册
+export const SignUp = (params) => post(`/consumer/add`, params);
+//登录
+export const loginIn = (params) => post(`/consumer/login`, params);
+//更新用户信息
+export const updateUserMsg = (params) => post(`/consumer/update`, params);
+//下载音乐
+export const download = (url) => Axios({
+    method: 'get',
+    url: url,
+    responseType: 'blob'
+});
+//提交评分
+export const setRank = (params) => post(`/rank/add`, params);
+//获取指定歌单的平均分
+export const getRankOfSongListId = (songListId) => get(`/rank?songListId=${songListId}`);
+//提交评论
+export const setComment = (params) => post(`/comment/add`, params);
+//点赞
+export const setLike = (params) => post(`/comment/like`, params);
+//返回当前歌单或歌曲的评论列表
+export const getAllComment = (type, id) => {
+        if (type == 0) { //歌曲
+            return get(`/comment/commentOfSongId?songId=${id}`);
+        } else { //歌单
+            return get(`/comment/commentOfSongListId?songListId=${id}`);
+        }
+    }
+    //新增收藏
+export const setCollect = (params) => post(`/collect/add`, params);
